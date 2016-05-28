@@ -34,7 +34,7 @@ def process(data):
         logging.error('Неправильный формат данных')
 
 
-def writeFile (filename):
+def write_file(filename):
     try:
         f = open(filename, 'w')
         f.write('Выведены максимальное значение для цены закрытия по месяцам.\nМесяц   MAX значение\n')

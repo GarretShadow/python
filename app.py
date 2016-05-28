@@ -4,7 +4,7 @@ import logging
 import sys
 
 # import time
-from process import writeFile, process_file, process_network
+from process import write_file, process_file, process_network
 
 if __name__ == "__main__":
     # проверка аргументов
@@ -45,7 +45,7 @@ if __name__ == "__main__":
 
     # запись в файл
     try:
-        writeFile('out.txt')
+        write_file('out.txt')
     except:
         print('')
     # if (args.save() is not None):
