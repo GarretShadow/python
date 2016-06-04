@@ -7,15 +7,14 @@ from datetime import datetime
 
 
 def process(data):
-    print("Месяц   MAX значение")
     by_month_max = {month: -1 for month in range(1, 13)}
     global by_month_max
     try:
         for date, close in data.items():
             if by_month_max[date] < close:
                 by_month_max[date] = close
-        for m_val in range(1, 13):
-            print(repr(m_val).rjust(4), repr(by_month_max[m_val]).rjust(12), end='\n')
+        #for m_val in range(1, 13):
+            # print(repr(m_val).rjust(4), repr(by_month_max[m_val]).rjust(12), end='\n')
         #     if month == int(time[1]):
         #         if maximum < num:
         #             maximum = num
@@ -30,19 +29,19 @@ def process(data):
         #         maximum = num
         # voc[str(month)] = maximum
     except:
-        print('Неправильный формат данных')
         logging.error('Неправильный формат данных')
 
 
 def write_file(filename):
     try:
         f = open(filename, 'w')
+        print('{0:5} {1:10}'.format('Месяц', 'MAX значение'))
         f.write('Выведены максимальное значение для цены закрытия по месяцам.\nМесяц   MAX значение\n')
         for k, v in by_month_max.items():
-            f.write(str(k) +"       " + str(v) + '\n')
+            f.write('{0:5} {1:10}'.format(k, v)+'\n')
+            print('{0:5} {1:10}'.format(k, v))
         f.close()
     except:
-        print("Ошибка при записи файла ", sys.exc_info()[0])
         logging.error("Ошибка при записи файла ", sys.exc_info()[0])
 
 
